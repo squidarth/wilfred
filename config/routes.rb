@@ -1,4 +1,8 @@
 Wilfred::Application.routes.draw do
+  post "/webhook/create", to: "webhooks#create"
+  resources :commits
+
+
   root to: "public#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

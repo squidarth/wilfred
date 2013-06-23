@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>User</th>
+    <th>State</th>
+    <th>SHA1</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% commits.each do |commit| %>
+  <tr>
+    <td><%= commit.user_id %></td>
+    <td><%= commit.state %></td>
+    <td><%= commit.sha1 %></td> 
+    <td><%= link_to 'Show', commit %></td>
+    <td><%= link_to 'Edit', edit_commit_path(commit) %></td>
+    <td><%= link_to 'Destroy', commit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
