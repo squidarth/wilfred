@@ -9,6 +9,11 @@ gem 'pg'
 gem 'zurb-foundation'
 gem 'json'
 gem 'httparty'
+
+gem 'devise'
+gem 'omniauth'
+
+gem 'omniauth-github'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
