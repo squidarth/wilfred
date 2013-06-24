@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624042355) do
+ActiveRecord::Schema.define(:version => 20130624051024) do
 
   create_table "commits", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130624042355) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "sha1"
+    t.text     "message"
+    t.string   "email"
   end
 
 end
