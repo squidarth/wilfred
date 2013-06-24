@@ -1,5 +1,5 @@
 class WebhooksController < ApplicationController
   def create
-    logger.info params.inspect
+    puts params[:payload].to_json
   end
 end
