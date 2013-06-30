@@ -11,4 +11,7 @@
  *= require_self
  *= require flat-ui
  *= require_tree .
+ *= require foundation
+ *= require globals
+ *= require auth-buttons
  */

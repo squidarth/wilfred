@@ -1,3 +1,31 @@
 // Place all the styles related to the public controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  .logo {
+    margin-top: 10px;
+    margin-bottom: 0;
+    h4 { 
+      color: #0066CC;
+    }
+  } 
+  .navigation {
+    float: right;
+    margin-top: 20px; 
+    margin-bottom: 0; 
+    li {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+
+.homepage-content {
+  h1 {
+    font-size: 6em;
+  }
+
+  a {
+    margin-top: 20px;
+  }
+}

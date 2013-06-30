@@ -3,8 +3,12 @@ Wilfred::Application.routes.draw do
   post "/webhook/create", to: "webhooks#create"
   resources :commits
   
-  devise_scope :user do 
-    get "/logout", to: "devise/sessions#destroy"
+  devise_scope :user do
+    get "/logout", to: "devise/sessions#destroy", as: :logout
+  end
+
+  authenticated :user do
+    root to: "commits#index"
   end
 
   root to: "public#index"

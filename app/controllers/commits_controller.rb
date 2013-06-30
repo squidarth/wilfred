@@ -2,7 +2,8 @@ class CommitsController < ApplicationController
   # GET /commits
   # GET /commits.json
   def index
-    @commits = Commit.all
+    @user = current_user 
+    @commits = Commit.order("created_at DESC").limit(100).all
 
     respond_to do |format|
       format.html # index.html.erb

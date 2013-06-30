@@ -1,23 +1,21 @@
 <table>
-  <tr>
-    <th>Email</th>
-    <th>Message</th>
-    <th>SHA1</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% commits.each do |commit| %>
-  <tr>
-    <td><%= commit.email %></td>
-    <td><%= commit.message %></td>
-    <td><%= commit.sha1 %></td> 
-    <td><%= link_to 'Show', commit %></td>
-    <td><%= link_to 'Edit', edit_commit_path(commit) %></td>
-    <td><%= link_to 'Destroy', commit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <thead> 
+    <tr>
+      <th >Email</th>
+      <th >Message</th>
+      <th >SHA1</th>
+      <th ></th>
+    </tr>
+  </thead>
+  
+  <tbody> 
+    <% commits.each do |commit| %>
+      <tr>
+        <td><%= commit.email %></td>
+        <td><%= commit.message %></td>
+        <td><%= commit.formatted_sha1 %></td> 
+        <td ><%= link_to 'Verify', commit %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-

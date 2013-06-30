@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
   def index
-    @user = current_user 
-    @commits = Commit.order("created_at DESC").limit(100).all
+    @user = current_user
+    render layout: false
   end
 end
