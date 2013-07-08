@@ -1,1 +1,43 @@
-<%= render "shared/commit_list", commits: @commits %>
+<script type="text/x-handlebars">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="index">
+  <div class="row"> 
+  <div class="container content"> 
+    <div class="twelve columns"> 
+       <table>
+        <thead> 
+          <tr>
+            <th >Email</th>
+            <th >Message</th>
+            <th >SHA1</th>
+            <th ></th>
+          </tr>
+        </thead>
+        
+        <tbody> 
+          {{#each model}} 
+          <tr>
+          <td>{{email}}</td>
+          <td>{{message}}</td>
+          <td>{{ formatted_sha1 }}</td> 
+          {{#if verified }}
+          <td >Verified</td>
+          {{/if}}
+
+          {{#if failed}}
+          <td><a href="#">Fix</a></td>
+          {{/if}}
+
+          {{#if not_checked}}
+            <td><a href="#">Fix</a></td>
+            {{/if}}
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</script>

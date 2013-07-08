@@ -14,7 +14,13 @@
         <td><%= commit.email %></td>
         <td><%= commit.message %></td>
         <td><%= commit.formatted_sha1 %></td> 
-        <td ><%= link_to 'Verify', commit %></td>
+        <% if commit.state == "verified" %> 
+          <td >Verified</td>
+        <% elsif commit.state == "failed" %>
+          
+        <% else %> 
+          <td ><%= link_to 'Verify', commit %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
