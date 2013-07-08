@@ -14,7 +14,17 @@
         <td><%= commit.email %></td>
         <td><%= commit.message %></td>
         <td><%= commit.formatted_sha1 %></td> 
-        <td ><%= link_to 'Verify', commit %></td>
+        
+        <% if commit.state == "verified" %>
+          <td><%= link_to "Bad", fail_commit_path(commit), class: "js-commit-action" %></td>
+        <% elsif commit.state == "failed" %>
+          <td><%= link_to 'Verify', verify_commit_path(commit), class: "js-commit-action" %></td>
+        <% else %>
+          <td >
+            <%= link_to 'Verify', verify_commit_path(commit), class: "js-commit-action" %>
+            <%= link_to "Bad", fail_commit_path(commit), class: "js-commit-action" %>
+          </td>
+        <% end %> 
       </tr>
     <% end %>
   </tbody>

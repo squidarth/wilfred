@@ -1,0 +1,5 @@
+<%= render "shared/commit_list", commits: @unchecked_commits %>
+<h3>Failed Commits</h3>
+<%= render "shared/commit_list", commits: @failed_commits %>
+<h3>Past Commits</h3>
+<%= render "shared/commit_list", commits: @past_commits %>

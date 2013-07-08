@@ -2,7 +2,9 @@ Wilfred::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   post "/webhook/create", to: "webhooks#create"
   resources :commits
-  
+
+  post "/commits/:id/verify", to: "commits#verify", as: :verify_commit
+  post "/commits/:id/fail", to: "commits#fail", as: :fail_commit  
   devise_scope :user do
     get "/logout", to: "devise/sessions#destroy", as: :logout
   end

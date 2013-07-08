@@ -1,16 +1,47 @@
 class CommitsController < ApplicationController
   # GET /commits
   # GET /commits.json
+  before_filter :get_commit, only: [:verify, :fail]
   def index
     @user = current_user 
-    @commits = Commit.order("created_at DESC").limit(100).all
 
+    prepare_commits
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @commits }
     end
   end
 
+  def verify
+    @commit.update_attributes(state: "verified")
+    prepare_commits
+    render json: {
+      success: true,
+      html: render_to_string(partial: "commit_content",
+                             locals: {
+                                past_commits: @past_commits,
+                                failed_commits: @failed_commits,
+                                unchecked_commits: @unchecked_commits,
+                              }
+      )}
+  end
+  
+  def fail
+    @commit.update_attributes(state: "failed")
+    prepare_commits
+    render json: {
+    success: true,
+    html: render_to_string(partial: "commit_content",
+                           locals: {
+                              past_commits: @past_commits,
+                              failed_commits: @failed_commits,
+                              unchecked_commits: @unchecked_commits,
+                            }
+    )}
+  end 
+  
+  
+  
   # GET /commits/1
   # GET /commits/1.json
   def show
@@ -80,5 +111,17 @@ class CommitsController < ApplicationController
       format.html { redirect_to commits_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def get_commit
+    @commit = Commit.find(params[:id])
+  end
+
+  def prepare_commits
+    @past_commits = Commit.verified.order("created_at DESC").limit(100).all
+    @failed_commits = Commit.failed
+    @unchecked_commits = Commit.unchecked
   end
 end
