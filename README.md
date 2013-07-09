@@ -7,3 +7,18 @@ TODOS:
 ====
 Settings for notifications
 Guide for deployments
+Tests
+
+Installation and Setup
+====
+wilfred is a Ruby on Rails application, so to run it locally, you will need to install Ruby on Rails.  Wilfred is pretty 
+straightforward to deploy on Heroku.  Look over the docs as to how to deploy a Rails app on Heroku.  There are three 
+environment variables that must be set in order for the app to work.  These are as follows:
+
+- GH_APP_ID (the id of your GitHub application)
+- GH_APP_SECRET (the secret of your GitHub application)
+- GH_ORGANIZATION (the organization in which your users must belong)
+
+If you would like to specify which branches you would like commits to show up from, feel free to configure them in a file called valid_branches.yml
+
+
