@@ -3,6 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     omniauth_params = request.env["omniauth.auth"]
     puts omniauth_params[:extra].inspect 
     puts omniauth_params[:info].inspect 
+    puts omniauth_params.inspect 
     is_in_organization = HTTParty.get(omniauth_params[:extra][:raw_info][:organizations_url], headers: {"User-Agent" => omniauth_params[:info][:nickname]})
             .map{|org| org["login"]}.include?(ENV["GH_ORGANIZATION"])
 
