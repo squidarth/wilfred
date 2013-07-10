@@ -8,6 +8,7 @@ TODOS:
 - Settings for notifications
 - Guide for deployments
 - Tests
+- Add License
 
 Installation and Setup
 ====
