@@ -5,10 +5,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             .map{|org| org["login"]}.include?(ENV["GH_ORGANIZATION"])
 
     return render json: {success: false, error: "Access Denied"} if !is_in_organization
-    email = omniauth_params["info"]["email"]
-    @user = User.find_by_email(email)
+    username = omniauth_params[:info][:nickname]
+    @user = User.find_by_username(username)
     if @user.nil?
-      @user = User.create(name: omniauth_params["info"]["name"], email: email)
+      @user = User.create(name: omniauth_params["info"]["name"], username: username)
       @user.provider = "github"
       @user.uid = omniauth_params["uid"]
       @user.save!
