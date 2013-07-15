@@ -1,5 +1,11 @@
+<% unless @unchecked_commits.empty? %>
 <%= render "shared/commit_list", commits: @unchecked_commits %>
+<% end %>
+<% unless @failed_commits.empty? %>
 <h3>Failed Commits</h3>
 <%= render "shared/commit_list", commits: @failed_commits %>
+<% end %>
+<% unless @past_commits.empty? %>
 <h3>Past Commits</h3>
 <%= render "shared/commit_list", commits: @past_commits %>
+<% end %>
