@@ -1,5 +1,5 @@
 class Commit < ActiveRecord::Base
-  attr_accessible :state, :user_id, :sha1, :email, :message
+  attr_accessible :state, :user_id, :sha1, :email, :message, :ci_passed
 
   scope :failed, where(state: "failed")
   scope :unchecked, where(state: nil)
