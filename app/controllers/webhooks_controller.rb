@@ -1,5 +1,5 @@
 class WebhooksController < ApplicationController
-  def create
+  def github
     # things i need: commit SHA1, the committer, and the message
     payload = JSON.parse(params[:payload])
 
@@ -15,6 +15,11 @@ class WebhooksController < ApplicationController
       Commit.create(email: email, sha1: sha1, message: message)
     end
 
+    return render json: {success: true}
+  end
+
+  def circle_ci
+    puts params.inspect 
     return render json: {success: true}
   end
 end

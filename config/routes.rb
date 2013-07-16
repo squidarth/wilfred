@@ -1,6 +1,7 @@
 Wilfred::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  post "/webhook/create", to: "webhooks#create"
+  post "/webhook/github", to: "webhooks#github"
+  post "/webhook/circleci", to: "webhooks#circle_ci" 
   resources :commits
 
   post "/commits/:id/verify", to: "commits#verify", as: :verify_commit
