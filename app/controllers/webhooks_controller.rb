@@ -19,7 +19,11 @@ class WebhooksController < ApplicationController
   end
 
   def circle_ci
-    puts params.inspect 
+    commit = Commit.find_by_sha1(params[:payload]["vcs_revision"])
+    if commit.present?
+      commit.update_attributes(:ci_passed, true)
+    end
+
     return render json: {success: true}
   end
 end
