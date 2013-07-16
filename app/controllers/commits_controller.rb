@@ -1,6 +1,8 @@
 class CommitsController < ApplicationController
   # GET /commits
   # GET /commits.json
+  PAST_COMMIT_COUNT = 25 
+  
   before_filter :get_commit, only: [:verify, :fail]
   def index
     @user = current_user 
@@ -120,7 +122,7 @@ class CommitsController < ApplicationController
   end
 
   def prepare_commits
-    @past_commits = Commit.verified.order("created_at DESC").limit(100).all
+    @past_commits = Commit.verified.order("created_at DESC").limit(PAST_COMMIT_COUNT).all
     @failed_commits = Commit.failed
     @unchecked_commits = Commit.unchecked
   end
