@@ -13,7 +13,7 @@
       <tr>
         <td><%= commit.email %></td>
         <td><%= commit.message %></td>
-        <td><%= commit.formatted_sha1 %></td> 
+        <td><a href="<%= "http://github.com/#{ENV["GH_REPO"]}/commit/#{commit.sha1}" %>"><%= commit.formatted_sha1 %></a></td> 
         
         <% if commit.state == "verified" %>
           <td><%= link_to "Bad", fail_commit_path(commit), class: "js-commit-action" %></td>

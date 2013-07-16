@@ -20,6 +20,7 @@ environment variables that must be set in order for the app to work.  These are 
 - GH_APP_ID (the id of your GitHub application)
 - GH_APP_SECRET (the secret of your GitHub application)
 - GH_ORGANIZATION (the organization in which your users must belong)
+- GH_REPO (the repository that you are following)
 
 If you would like to specify which branches you would like commits to show up from, feel free to configure them in a file called valid_branches.yml
 
