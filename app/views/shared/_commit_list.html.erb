@@ -4,6 +4,7 @@
       <th >Email</th>
       <th >Message</th>
       <th >SHA1</th>
+      <th >CI Passed</th>
       <th ></th>
     </tr>
   </thead>
@@ -14,7 +15,11 @@
         <td><%= commit.email %></td>
         <td><%= commit.message %></td>
         <td><a href="<%= "http://github.com/#{ENV["GH_REPO"]}/commit/#{commit.sha1}" %>"><%= commit.formatted_sha1 %></a></td> 
-        
+        <td>
+          <% if commit.ci_passed %>
+            ✓
+          <% end %>
+        </td>
         <% if commit.state == "verified" %>
           <td><%= link_to "Bad", fail_commit_path(commit), class: "js-commit-action" %></td>
         <% elsif commit.state == "failed" %>
