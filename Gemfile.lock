@@ -51,6 +51,8 @@ GEM
       multipart-post (~> 1.1)
     hashie (2.0.5)
     hike (1.2.3)
+    hipchat (0.10.1)
+      httparty
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -150,6 +152,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  hipchat
   httparty
   jquery-rails
   json
