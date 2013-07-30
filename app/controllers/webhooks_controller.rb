@@ -7,13 +7,12 @@ class WebhooksController < ApplicationController
       return render json: {success: true}
     end
 
-    payload["commits"].each do |commit|
-      author = commit["author"]
-      email = author["email"]
-      sha1 = commit["id"]
-      message = commit["message"]
-      Commit.create(email: email, sha1: sha1, message: message)
-    end
+    commit = payload["commits"].last
+    author = commit["author"]
+    email = author["email"]
+    sha1 = commit["id"]
+    message = commit["message"]
+    Commit.create(email: email, sha1: sha1, message: message)
 
     return render json: {success: true}
   end
