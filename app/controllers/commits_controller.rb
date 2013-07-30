@@ -18,9 +18,9 @@ class CommitsController < ApplicationController
     @commit.update_attributes(state: "verified")
     prepare_commits
 
-    if HIPCHAT_TOKEN.present? && @unchecked_commits.empty? && @failed_commits.empty? # all commits are good
-      client = HipChat::Client.new(HIPCHAT_TOKEN)
-      client["Engineering"].send('Wilfred', 'All commits have been verified!', color: 'green')
+    if ENV["HIPCHAT_TOKEN"].present? && ENV["HIPCHAT_ROOM"] && @unchecked_commits.empty? && @failed_commits.empty? # all commits are good
+      client = HipChat::Client.new(ENV["HIPCHAT_TOKEN"])
+      client[ENV["HIPCHAT_ROOM"]].send('Wilfred', 'All commits have been verified!', color: ENV["HIPCHAT_COLOR"] || "green")
     end
 
     render json: {

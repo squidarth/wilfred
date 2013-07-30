@@ -21,6 +21,8 @@ environment variables that must be set in order for the app to work.  These are 
 - GH_APP_SECRET (the secret of your GitHub application)
 - GH_ORGANIZATION (the organization in which your users must belong)
 - GH_REPO (the repository that you are following)
-
+- HIPCHAT_TOKEN (your hipchat token,optional)
+- HIPCHAT_ROOM (your hipchat room)
+- HIPCHAT_COLOR (the color you'd like hipchat messages to show up in , default is green)
 If you would like to specify which branches you would like commits to show up from, feel free to configure them in a file called valid_branches.yml
 
