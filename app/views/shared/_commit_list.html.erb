@@ -14,7 +14,7 @@
       <tr>
         <td><%= commit.email %></td>
         <td><%= commit.message %></td>
-        <td><a href="<%= "http://github.com/#{ENV["GH_REPO"]}/commit/#{commit.sha1}" %>"><%= commit.formatted_sha1 %></a></td> 
+        <td><a href="<%= "http://github.com/#{ENV["GH_REPO"]}/commit/#{commit.sha1}" %>" target="_blank"><%= commit.formatted_sha1 %></a></td> 
         <td>
           <% if commit.ci_passed %>
             ✓
